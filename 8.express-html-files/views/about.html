@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Node.js API Structure</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid #026e02;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #026e02;
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #0056b3;
+            border-left: 5px solid #0056b3;
+            padding-left: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .structure-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #fcfcfc;
+        }
+
+        .component-title {
+            font-weight: 600;
+            color: #333;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        code {
+            background-color: #eef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            color: #a020f0;
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>About Our Node.js API Architecture</h1>
+            <p>Understanding the structural foundation of our backend services.</p>
+        </header>
+
+        <section class="structure-section">
+            <h2>Overview of Node.js API Structure</h2>
+            <p>Our application utilizes a robust, scalable structure commonly based on the Model-View-Controller (MVC)
+                pattern, adapted for stateless RESTful APIs using Node.js and Express. This separation of concerns
+                ensures maintainability, testability, and clear delineation of responsibilities.</p>
+        </section>
+
+        <section class="structure-section">
+            <h2>Core Architectural Components</h2>
+            <div class="component-title">1. Routes (Endpoints)</div>
+            <ul>
+                <li>Defines the available URI endpoints (e.g., <code>/api/v1/users</code>).</li>
+                <li>Maps HTTP methods (GET, POST, PUT, DELETE) to specific controller functions.</li>
+                <li>Acts as the entry point for all incoming requests.</li>
+            </ul>
+
+            <div class="component-title">2. Controllers (Request Handlers)</div>
+            <ul>
+                <li>Handles the request logic: receives input, validates parameters, and calls the appropriate service
+                    layer.</li>
+                <li>Is responsible for formatting the final HTTP response (status codes and body content).</li>
+                <li>Keeps business logic minimal, deferring complexity to the Service layer.</li>
+            </ul>
+
+            <div class="component-title">3. Services (Business Logic)</div>
+            <ul>
+                <li>Encapsulates the core business rules and workflows.</li>
+                <li>Coordinates interactions between Models (data layer) and other external dependencies (e.g., payment
+                    gateways).</li>
+                <li>This layer promotes reusability of complex operations across different controllers.</li>
+            </ul>
+
+            <div class="component-title">4. Models (Data Access Layer)</div>
+            <ul>
+                <li>Defines the schema and structure for data persistence (often using an ORM like Sequelize or
+                    Mongoose).</li>
+                <li>Handles direct interaction with the database (CRUD operations).</li>
+                <li>Ensures data integrity and consistent formatting.</li>
+            </ul>
+        </section>
+
+        <section class="structure-section">
+            <h2>Middleware Integration</h2>
+            <p>We employ Express middleware extensively for cross-cutting concerns before the request reaches the main
+                controller logic:</p>
+            <ul>
+                <li><strong>Authentication/Authorization Middleware:</strong> Validating JWTs or API keys.</li>
+                <li><strong>Validation Middleware:</strong> Ensuring request payloads conform to expected formats (e.g.,
+                    using Joi or express-validator).</li>
+                <li><strong>Logging Middleware:</strong> Recording request details for auditing and monitoring.</li>
+            </ul>
+        </section>
+
+        <section class="structure-section">
+            <h2>Configuration and Environment</h2>
+            <p>All environment-specific settings (database credentials, port numbers, external service keys) are managed
+                using environment variables loaded via the <code>dotenv</code> package, adhering to the principle of the
+                12-Factor App methodology.</p>
+            <p>Configuration is accessed centrally, typically via a dedicated <code>config/</code> module.</p>
+        </section>
+    </div>
+</body>
+
+</html>

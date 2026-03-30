@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h2 class="typing">Updating Student!</h2>
+            <form method="post" action="/ui/update-student" class="matrix-form">
+
+                <!-- ✅ ADD THIS -->
+                <input type="hidden" name="id" value="<%= student._id %>" />
+
+                <div class="form-group">
+                    <label>> Enter Name:</label>
+                    <input type="text" name="name" value="<%= student.name %>" required />
+                </div>
+
+                <div class="form-group">
+                    <label>> Enter Age:</label>
+                    <input type="number" name="age" value="<%= student.age %>" required />
+                </div>
+
+                <div class="form-group">
+                    <label>> Enter Email:</label>
+                    <input type="email" name="email" value="<%= student.email %>" required />
+                </div>
+
+                <div class="button-group">
+                    <button type="submit">Update Student</button><br />
+                    <button type="button" onclick="window.history.back()">↩ Go Back</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

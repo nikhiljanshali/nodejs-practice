@@ -1,0 +1,57 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title About Page
+    link(rel="stylesheet", href="/style.css")
+
+  body
+
+    // Header
+    header
+      h1.typing About Page
+      p Welcome to the About Section
+
+    // User Info Section
+    section.card
+      h2 User Information
+      p
+        strong Name:
+        |  #{name}
+      p
+        strong Email:
+        |  #{email}
+      p
+        strong Age:
+        |  #{age}
+
+      if age >= 18
+        p.success ✅ You are eligible
+      else
+        p.danger ❌ You are underage
+
+    // Skills Section
+    section.card
+      h2 Skills
+      if skills && skills.length    
+        ul
+          each skill in skills
+            li= skill
+      else
+        p No skills available
+
+    // Projects Section
+    section.card
+      h2 Projects
+      if projects && projects.length
+        each project in projects
+          .project
+            h3= project.title
+            p= project.description
+      else
+        p No projects found
+
+    // Footer
+    footer
+      p © #{new Date().getFullYear()} My App

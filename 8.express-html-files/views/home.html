@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js API Structure Overview</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Node.js API Architecture Overview</h1>
+        <p>A Professional Look at RESTful Service Structure</p>
+    </header>
+
+    <div class="container">
+
+        <section id="introduction">
+            <h2>Introduction to Node.js API Structure</h2>
+            <p>A well-structured Node.js API, typically leveraging the Express framework, adheres to architectural
+                patterns that promote scalability, maintainability, and testability. The commonly adopted structure
+                separates concerns into distinct layers: **Routes**, **Controllers**, **Services**, and **Models (Data
+                Access Layer)**.</p>
+        </section>
+
+        <section id="structure-breakdown">
+            <h2>Core Components of the Structure</h2>
+
+            <div class="api-component">
+                <h3>1. Routes (or Routers)</h3>
+                <p>Routes define the endpoints (URIs) and map incoming HTTP requests (GET, POST, PUT, DELETE) to
+                    specific controller functions. They act as the entry point for all API traffic.</p>
+                <p><strong>Example Responsibility:</strong> Defining <code>/api/users</code>.</p>
+                <div class="code-example">
+                    <code>
+// routes/userRoutes.js
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userController');
+
+router.get('/', userController.getAllUsers);
+router.post('/', userController.createUser);
+
+module.exports = router;
+                    </code>
+                </div>
+            </div>
+
+            <div class="api-component">
+                <h3>2. Controllers</h3>
+                <p>Controllers handle the request and response cycle. They validate input, call the appropriate service
+                    methods, and format the final response sent back to the client. They should contain minimal business
+                    logic.</p>
+                <p><strong>Example Responsibility:</strong> Receiving a POST request and calling the service layer to
+                    create a user.</p>
+                <div class="code-example">
+                    <code>
+// controllers/userController.js
+const userService = require('../services/userService');
+
+exports.createUser = async (req, res) => {
+    try {
+        const newUser = await userService.create(req.body);
+        res.status(201).json({ message: 'User created successfully', data: newUser });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+                    </code>
+                </div>
+            </div>
+
+            <div class="api-component">
+                <h3>3. Services (Business Logic Layer)</h3>
+                <p>Services contain the core business logic. They orchestrate data operations, perform complex
+                    calculations, and interact directly with the data access layer (Models). This layer ensures
+                    controllers remain lean.</p>
+                <p><strong>Example Responsibility:</strong> Checking if a username already exists before saving to the
+                    database.</p>
+                <div class="code-example">
+                    <code>
+// services/userService.js
+const User = require('../models/userModel');
+
+exports.create = async (userData) => {
+    const existingUser = await User.findOne({ username: userData.username });
+    if (existingUser) {
+        throw new Error('Username already taken');
+    }
+    const user = new User(userData);
+    return user.save();
+};
+                    </code>
+                </div>
+            </div>
+
+            <div class="api-component">
+                <h3>4. Models (Data Access Layer / Persistence)</h3>
+                <p>Models define the structure of the data (often using Mongoose schemas for MongoDB or Sequelize/Prisma
+                    for SQL) and handle direct interaction with the database (CRUD operations).</p>
+                <p><strong>Example Responsibility:</strong> Defining the fields and validation rules for the User
+                    entity.</p>
+                <div class="code-example">
+                    <code>
+// models/userModel.js
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('User', UserSchema);
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture-diagram">
+            <h2>Typical Flow of an API Request</h2>
+            <p>The request follows a strict, unidirectional path to maintain separation of concerns:</p>
+            <ol>
+                <li><strong>Client Request (e.g., Browser/App)</strong> sends HTTP request to the server.</li>
+                <li><strong>Routes Layer</strong> identifies the correct handler function based on the URL and HTTP
+                    method.</li>
+                <li><strong>Controller Layer</strong> extracts data from the request (body/params), executes validation,
+                    and delegates logic execution.</li>
+                <li><strong>Service Layer</strong> executes the required business rules, potentially involving multiple
+                    data operations.</li>
+                <li><strong>Model Layer</strong> interacts directly with the database (read/write).</li>
+                <li>The response travels back up through the layers to the **Controller**, which formats the final
+                    JSON/XML response and sends it to the client.</li>
+            </ol>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

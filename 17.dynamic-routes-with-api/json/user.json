@@ -1,0 +1,139 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Nikhil Janshali",
+      "email": "nikhil@example.com",
+      "age": 28,
+      "city": "Surat",
+      "isActive": true,
+      "createdAt": "2026-03-28T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Rahul Sharma",
+      "email": "rahul@example.com",
+      "age": 30,
+      "city": "Mumbai",
+      "isActive": true,
+      "createdAt": "2026-03-27T08:30:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Priya Patel",
+      "email": "priya@example.com",
+      "age": 26,
+      "city": "Ahmedabad",
+      "isActive": false,
+      "createdAt": "2026-03-26T14:15:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Amit Verma",
+      "email": "amit@example.com",
+      "age": 32,
+      "city": "Delhi",
+      "isActive": true,
+      "createdAt": "2026-03-25T11:20:00Z"
+    },
+    {
+      "id": 5,
+      "name": "Sneha Iyer",
+      "email": "sneha@example.com",
+      "age": 27,
+      "city": "Bangalore",
+      "isActive": true,
+      "createdAt": "2026-03-24T09:10:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Vikram Singh",
+      "email": "vikram@example.com",
+      "age": 35,
+      "city": "Jaipur",
+      "isActive": false,
+      "createdAt": "2026-03-23T16:45:00Z"
+    },
+    {
+      "id": 7,
+      "name": "Neha Gupta",
+      "email": "neha@example.com",
+      "age": 24,
+      "city": "Pune",
+      "isActive": true,
+      "createdAt": "2026-03-22T13:30:00Z"
+    },
+    {
+      "id": 8,
+      "name": "Rohan Mehta",
+      "email": "rohan@example.com",
+      "age": 29,
+      "city": "Chandigarh",
+      "isActive": true,
+      "createdAt": "2026-03-21T18:00:00Z"
+    },
+    {
+      "id": 9,
+      "name": "Kavita Joshi",
+      "email": "kavita@example.com",
+      "age": 31,
+      "city": "Indore",
+      "isActive": false,
+      "createdAt": "2026-03-20T07:50:00Z"
+    },
+    {
+      "id": 10,
+      "name": "Arjun Reddy",
+      "email": "arjun@example.com",
+      "age": 33,
+      "city": "Hyderabad",
+      "isActive": true,
+      "createdAt": "2026-03-19T12:40:00Z"
+    },
+    {
+      "id": 11,
+      "name": "Pooja Shah",
+      "email": "pooja@example.com",
+      "age": 25,
+      "city": "Surat",
+      "isActive": true,
+      "createdAt": "2026-03-18T15:25:00Z"
+    },
+    {
+      "id": 12,
+      "name": "Manish Kumar",
+      "email": "manish@example.com",
+      "age": 34,
+      "city": "Patna",
+      "isActive": false,
+      "createdAt": "2026-03-17T10:05:00Z"
+    },
+    {
+      "id": 13,
+      "name": "Anjali Desai",
+      "email": "anjali@example.com",
+      "age": 28,
+      "city": "Vadodara",
+      "isActive": true,
+      "createdAt": "2026-03-16T19:15:00Z"
+    },
+    {
+      "id": 14,
+      "name": "Suresh Nair",
+      "email": "suresh@example.com",
+      "age": 36,
+      "city": "Kochi",
+      "isActive": true,
+      "createdAt": "2026-03-15T08:55:00Z"
+    },
+    {
+      "id": 15,
+      "name": "Divya Agarwal",
+      "email": "divya@example.com",
+      "age": 27,
+      "city": "Noida",
+      "isActive": false,
+      "createdAt": "2026-03-14T17:35:00Z"
+    }
+  ]
+}

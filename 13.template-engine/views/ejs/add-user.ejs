@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="card">
+            <h2 class="typing">Add New User</h2>
+
+            <form action="submit-user" method="post" class="matrix-form">
+
+                <div class="form-group">
+                    <label for="name">> Enter Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Type your name...">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">> Enter Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Type your email...">
+                </div>
+
+                <div class="form-group">
+                    <label for="age">> Enter Age:</label>
+                    <input type="text" id="age" name="age" required placeholder="Type your age...">
+                </div>
+
+                <button type="submit">➤ Add User</button>
+                <button onclick="window.history.back()">↩ Go Back</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

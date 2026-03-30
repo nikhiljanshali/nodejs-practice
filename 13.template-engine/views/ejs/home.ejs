@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard : EJS</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 class="typing">Welcome to the System</h1>
+        <p class="sub-text">Initializing user session...</p>
+    </header>
+
+    <!-- User Info Card -->
+    <section class="card">
+        <h2>User Profile</h2>
+
+        <p><strong>Name:</strong>
+            <%= name %>
+        </p>
+        <p><strong>Age:</strong>
+            <%= age %>
+        </p>
+        <p><strong>Email:</strong>
+            <%= email %>
+        </p>
+
+        <!-- Conditional Rendering -->
+        <% if (age>= 18) { %>
+            <p class="success">✅ Access Level: Adult</p>
+            <% } else { %>
+                <p class="danger">❌ Access Restricted (Minor)</p>
+                <% } %>
+    </section>
+
+    <!-- Skills Section (Dynamic Loop) -->
+    <section class="card">
+        <h2>Skills</h2>
+
+        <% if (skills && skills.length> 0) { %>
+            <ul>
+                <% skills.forEach(skill=> { %>
+                    <li>
+                        <%= skill %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } else { %>
+                <p>No skills found</p>
+                <% } %>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="card">
+        <h2>Projects</h2>
+
+        <% if (projects && projects.length> 0) { %>
+            <% projects.forEach(project=> { %>
+                <div class="project">
+                    <h3>
+                        <%= project.title %>
+                    </h3>
+                    <p>
+                        <%= project.description %>
+                    </p>
+                </div>
+                <% }) %>
+                    <% } else { %>
+                        <p>No projects available</p>
+                        <% } %>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© <%= new Date().getFullYear() %> EJS App | All rights reserved</p>
+    </footer>
+
+</body>
+
+</html>

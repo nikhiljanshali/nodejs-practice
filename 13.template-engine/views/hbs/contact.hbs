@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Contact Us</h1>
+    <p>Get in touch with us anytime</p>
+  </header>
+
+  <!-- User Info Section -->
+  <section>
+    <h2>Your Details</h2>
+
+    <p><strong>Name:</strong> {{name}}</p>
+    <p><strong>Email:</strong> {{email}}</p>
+
+    {{#if isActive}}
+      <p style="color: green;">✅ Status: Active User</p>
+    {{else}}
+      <p style="color: red;">❌ Status: Inactive User</p>
+    {{/if}}
+  </section>
+
+  <!-- Contact Information -->
+  <section>
+    <h2>Contact Information</h2>
+
+    <p><strong>Phone:</strong> {{phone}}</p>
+    <p><strong>Address:</strong> {{address}}</p>
+  </section>
+
+  <!-- Dynamic Messages -->
+  <section>
+    <h2>Messages</h2>
+
+    {{#if messages.length}}
+      <ul>
+        {{#each messages}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>No messages available</p>
+    {{/if}}
+  </section>
+
+  <!-- Contact Form -->
+  <section>
+    <h2>Send a Message</h2>
+
+    <form action="/submit-contact" method="POST">
+      <div>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+      </div>
+
+      <div>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div>
+        <label>Message:</label>
+        <textarea name="message" rows="4" required></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+      <button onclick="window.history.back()">↩ Go Back</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 My App | Contact Page</p>
+  </footer>
+
+</body>
+</html>

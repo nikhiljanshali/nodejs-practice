@@ -1,0 +1,26 @@
+{
+  "name": "19.database---nodejs-mongoose",
+  "version": "1.0.0",
+  "description": "Database mongoose nodejs expressjs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "database",
+    "mongoose",
+    "nodejs",
+    "express"
+  ],
+  "author": "Nikhil Janshali",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.3",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.14"
+  }
+}

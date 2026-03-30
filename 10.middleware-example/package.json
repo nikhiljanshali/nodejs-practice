@@ -1,0 +1,21 @@
+{
+  "name": "10.middleware-example",
+  "version": "1.0.0",
+  "description": "express middleware exampl",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "example"
+  ],
+  "author": "Nikhil Janshali",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}

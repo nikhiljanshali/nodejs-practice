@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<div class="page-header">
+  <a href="/products" class="back-link">← All Products</a>
+</div>
+
+<div class="card detail-card">
+  <div class="detail-header">
+    <h1><%= product.name %></h1>
+    <span class="tag tag-lg"><%= product.category %></span>
+  </div>
+
+  <div class="detail-grid">
+    <div class="detail-item">
+      <span class="detail-label">Price</span>
+      <span class="detail-value price">$<%= product.price.toFixed(2) %></span>
+    </div>
+    <div class="detail-item">
+      <span class="detail-label">In Stock</span>
+      <span class="detail-value <%= product.stock < 10 ? 'low-stock' : '' %>">
+        <%= product.stock %> units
+        <% if (product.stock < 10) { %> ⚠️ Low<% } %>
+      </span>
+    </div>
+    <div class="detail-item">
+      <span class="detail-label">Product ID</span>
+      <span class="detail-value muted">#<%= product.id %></span>
+    </div>
+  </div>
+
+  <div class="detail-actions">
+    <a href="/products/<%= product.id %>/edit" class="btn btn-secondary">✏️ Edit</a>
+    <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline">
+      <button type="submit" class="btn btn-danger"
+        onclick="return confirm('Delete this product?')">🗑 Delete</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
