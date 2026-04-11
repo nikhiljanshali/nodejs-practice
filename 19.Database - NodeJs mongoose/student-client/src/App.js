@@ -9,7 +9,7 @@ import {
 } from "./api";
 import "./App.css";
 
-const emptyForm = { name: "", age: "", email: "" };
+const emptyForm = { firstname: "", lastname: "", age: "", email: "" };
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -27,9 +27,7 @@ function App() {
   const loadAll = async () => {
     try {
       const data = await getAllStudents(); // already JSON
-
-      console.log(data);
-
+      // console.log(data);
       setStudents(data.students || []);
     } catch (err) {
       console.error("Error loading students:", err);
@@ -47,7 +45,7 @@ function App() {
 
   // Add or Update
   const handleSubmit = async () => {
-    if (!form.name || !form.age || !form.email) {
+  if (!form.firstname || !form.lastname || !form.age || !form.email) {
       return notify("⚠️ All fields are required!");
     }
     if (editId) {
@@ -64,7 +62,7 @@ function App() {
 
   // Populate form for editing
   const handleEdit = (student) => {
-    setForm({ name: student.name, age: student.age, email: student.email });
+    setForm({ firstname: student.firstname, lastname: student.lastname, age: student.age, email: student.email });
     setEditId(student._id);
   };
 
@@ -130,9 +128,16 @@ function App() {
         <h3>{editId ? "✏️ Edit Student" : "➕ Add"}</h3>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <input
-            name="name"
-            placeholder="Name"
-            value={form.name}
+            name="firstname"
+            placeholder="First Name"
+            value={form.firstname}
+            onChange={handleChange}
+            style={inputStyle}
+          />
+          <input
+            name="lastname"
+            placeholder="Last Name"
+            value={form.lastname}
             onChange={handleChange}
             style={inputStyle}
           />
@@ -212,7 +217,8 @@ function App() {
           <thead style={{ position: "sticky", top: 0, zIndex: 1 }}>
             <tr style={{ background: "#343a40", color: "#fff" }}>
               <th style={th}>#</th>
-              <th style={th}>Name</th>
+              <th style={th}>First Name</th>
+              <th style={th}>Last Name</th>
               <th style={th}>Age</th>
               <th style={th}>Email</th>
               <th style={th}>Actions</th>
@@ -234,7 +240,8 @@ function App() {
                   style={{ background: i % 2 === 0 ? "#fff" : "#f2f2f2" }}
                 >
                   <td style={td}>{i + 1}</td>
-                  <td style={td}>{s.name}</td>
+                  <td style={td}>{s.firstname}</td>
+                  <td style={td}>{s.lastname}</td>
                   <td style={td}>{s.age}</td>
                   <td style={td}>{s.email}</td>
                   <td style={td}>

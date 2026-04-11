@@ -1,0 +1,27 @@
+{
+  "name": "22.cookies",
+  "version": "1.0.0",
+  "description": "Node Cookies-Session Example",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "Cookies",
+    "Session",
+    "Example"
+  ],
+  "author": "Nikhil Janshali",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "ejs": "^5.0.1",
+    "express-session": "^1.19.0",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "express": "^5.2.1"
+  }
+}

@@ -1,0 +1,92 @@
+<div class="card">
+  <div class="card-header-custom">
+    <i class="bi bi-person-lines-fill" style="color:var(--ng-red);font-size:16px;"></i>
+    <div style="font-size:14px;font-weight:600;">Appointment List ({{ filteredAppointments.length }} items)</div>
+    <div style="margin-left:auto;">
+      <button class="btn-ghost" title="Clear filters" (click)="addAppointment()">
+        <i class="bi bi-person-plus-fill"></i> Add Appointment
+      </button>
+    </div>
+  </div>
+  <div style="overflow-x:auto;" class="card-body p-0">
+    <table class="todo-table">
+      <thead>
+        <tr>
+          <th>Appointment Date</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Status</th>
+          <th>Reason</th>
+          <th>Consultation</th>
+          <th style="text-align: end;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (filteredAppointments && filteredAppointments.length > 0) {
+        @for (item of filteredAppointments; track item._id; let i = $index) {
+
+        <!-- MAIN ROW -->
+        <tr>
+          <td>{{ item.appointmentDate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ item.startTime }}</td>
+          <td>{{ item.endTime }}</td>
+
+          <td>
+            <span class="status-badge" [ngClass]="getStatusClass(item.status)">
+              <i class="bi" [ngClass]="getStatusIcon(item.status)"></i>
+              {{ item.status }}
+            </span>
+          </td>
+
+          <td>{{ item.reason }}</td>
+
+          <td>
+            <span class="consult-badge" [ngClass]="getConsultClass(item.consultationType)">
+              <i class="bi" [ngClass]="getConsultIcon(item.consultationType)"></i>
+              {{ item.consultationType | titlecase }}
+            </span>
+          </td>
+
+          <td class="actions-cell">
+            <button class="btn-icon" (click)="togglePatientDetails(item)">
+              <i class="bi bi-person-fill-check"></i>
+            </button>
+
+            <button class="btn-icon" (click)="toggleDoctorDetails(item)">
+              <i class="bi bi-person-bounding-box"></i>
+            </button>
+          </td>
+        </tr>
+
+        <!-- ✅ PATIENT SUB ROW -->
+        @if (item.showPatient) {
+        <tr class="sub-row">
+          <td colspan="7">
+            <div class="sub-card">
+              <strong>Patient Details</strong>
+              <div>Name: {{ item.patientDetails?.firstName }} {{ item.patientDetails?.lastName }}</div>
+              <div>Email: {{ item.patientDetails?.email }}</div>
+            </div>
+          </td>
+        </tr>
+        }
+
+        <!-- ✅ DOCTOR SUB ROW -->
+        @if (item.showDoctor) {
+        <tr class="sub-row">
+          <td colspan="7">
+            <div class="sub-card">
+              <strong>Doctor Details</strong>
+              <div>Name: Dr. {{ item.doctorDetails?.firstName }} {{ item.doctorDetails?.lastName }}</div>
+              <div>Specialization: {{ item.doctorDetails?.specialization }}</div>
+            </div>
+          </td>
+        </tr>
+        }
+
+        }
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

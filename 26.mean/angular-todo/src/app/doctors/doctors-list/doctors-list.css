@@ -1,0 +1,113 @@
+.sub-row {
+  background: #f9fafb;
+}
+
+.sub-row-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #f3f4f6;
+}
+
+/* Each item box */
+.sub-item {
+  background: #ffffff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Full width section (for availability) */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Availability list */
+.availability-list {
+  margin-top: 6px;
+  padding-left: 16px;
+}
+
+.availability-list li {
+  font-size: 12px;
+  color: #374151;
+}
+
+.spec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Colors */
+.spec-red {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.spec-pink {
+  background: #fce7f3;
+  color: #db2777;
+}
+.spec-purple {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+.spec-orange {
+  background: #ffedd5;
+  color: #ea580c;
+}
+.spec-blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.spec-indigo {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+.spec-rose {
+  background: #ffe4e6;
+  color: #e11d48;
+}
+.spec-teal {
+  background: #ccfbf1;
+  color: #0d9488;
+}
+.spec-cyan {
+  background: #cffafe;
+  color: #0891b2;
+}
+.spec-yellow {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+.spec-amber {
+  background: #fef3c7;
+  color: #d97706;
+}
+.spec-sky {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+.spec-green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+.spec-emerald {
+  background: #d1fae5;
+  color: #059669;
+}
+.spec-gray {
+  background: #f3f4f6;
+  color: #374151;
+}
+.spec-default {
+  background: #f1f5f9;
+  color: #334155;
+}

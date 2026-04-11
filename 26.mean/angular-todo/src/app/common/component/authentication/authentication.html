@@ -1,0 +1,482 @@
+<div id="screen-auth" class="screen active">
+  <div class="auth-shell">
+
+    <!-- ════════════════════════════════════════
+       LEFT PANEL — Angular-themed SVG Pattern
+  ════════════════════════════════════════ -->
+    <div class="auth-left">
+
+      <!-- SVG background pattern -->
+      <svg class="bg-pattern" viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+        <!-- Deep grid -->
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="0.5" />
+          </pattern>
+          <pattern id="grid2" width="200" height="200" patternUnits="userSpaceOnUse">
+            <path d="M 200 0 L 0 0 0 200" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.75" />
+          </pattern>
+          <radialGradient id="glow1" cx="50%" cy="30%" r="55%">
+            <stop offset="0%" stop-color="#DD0031" stop-opacity="0.15" />
+            <stop offset="100%" stop-color="#DD0031" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="glow2" cx="80%" cy="75%" r="40%">
+            <stop offset="0%" stop-color="#1976D2" stop-opacity="0.1" />
+            <stop offset="100%" stop-color="#1976D2" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+
+        <rect width="700" height="900" fill="url(#grid)" />
+        <rect width="700" height="900" fill="url(#grid2)" />
+        <rect width="700" height="900" fill="url(#glow1)" />
+        <rect width="700" height="900" fill="url(#glow2)" />
+
+        <!-- Angular logo geometry — large background -->
+        <g opacity="0.04" transform="translate(350,420)">
+          <polygon points="0,-180 155,90 -155,90" fill="none" stroke="white" stroke-width="2" />
+          <polygon points="0,-130 112,65 -112,65" fill="none" stroke="white" stroke-width="1" />
+          <line x1="-155" y1="90" x2="155" y2="90" stroke="white" stroke-width="1" />
+          <line x1="0" y1="-180" x2="0" y2="90" stroke="white" stroke-width="0.5" stroke-dasharray="6,4" />
+        </g>
+
+        <!-- Circuit-board paths — horizontal traces -->
+        <g stroke="rgba(221,0,49,0.18)" stroke-width="1" fill="none">
+          <path d="M-20,120 L180,120 L180,200 L320,200" />
+          <path d="M0,280 L140,280 L140,340 L260,340 L260,380" />
+          <path d="M60,500 L200,500 L200,460 L380,460" />
+          <path d="M-20,650 L100,650 L100,600 L220,600 L220,640 L350,640" />
+          <path d="M300,750 L420,750 L420,700 L560,700" />
+          <path d="M500,820 L620,820 L620,760 L720,760" />
+        </g>
+
+        <!-- Circuit node dots — red -->
+        <g fill="rgba(221,0,49,0.35)">
+          <circle cx="180" cy="120" r="3.5" />
+          <circle cx="180" cy="200" r="3.5" />
+          <circle cx="140" cy="280" r="3.5" />
+          <circle cx="140" cy="340" r="3.5" />
+          <circle cx="260" cy="340" r="3.5" />
+          <circle cx="200" cy="500" r="3.5" />
+          <circle cx="200" cy="460" r="3.5" />
+          <circle cx="100" cy="650" r="3.5" />
+          <circle cx="100" cy="600" r="3.5" />
+          <circle cx="220" cy="600" r="3.5" />
+          <circle cx="420" cy="750" r="3.5" />
+          <circle cx="420" cy="700" r="3.5" />
+          <circle cx="620" cy="820" r="3.5" />
+        </g>
+
+        <!-- Secondary traces — blue -->
+        <g stroke="rgba(25,118,210,0.14)" stroke-width="0.75" fill="none">
+          <path d="M500,80 L580,80 L580,160 L660,160" />
+          <path d="M440,220 L520,220 L520,300 L600,300 L600,380 L680,380" />
+          <path d="M550,550 L630,550 L630,490 L710,490" />
+          <path d="M480,680 L560,680 L560,730" />
+          <path d="M200,760 L280,760 L280,800" />
+        </g>
+
+        <g fill="rgba(25,118,210,0.35)">
+          <circle cx="580" cy="80" r="2.5" />
+          <circle cx="580" cy="160" r="2.5" />
+          <circle cx="520" cy="220" r="2.5" />
+          <circle cx="520" cy="300" r="2.5" />
+          <circle cx="600" cy="300" r="2.5" />
+          <circle cx="600" cy="380" r="2.5" />
+          <circle cx="630" cy="550" r="2.5" />
+          <circle cx="630" cy="490" r="2.5" />
+          <circle cx="560" cy="680" r="2.5" />
+          <circle cx="280" cy="760" r="2.5" />
+        </g>
+
+        <!-- Component boxes (IC chip rectangles) -->
+        <g fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.07)" stroke-width="0.75">
+          <rect x="280" y="90" width="80" height="50" rx="4" />
+          <rect x="60" y="230" width="60" height="38" rx="4" />
+          <rect x="310" y="310" width="70" height="44" rx="4" />
+          <rect x="350" y="430" width="90" height="50" rx="4" />
+          <rect x="80" y="560" width="68" height="40" rx="4" />
+          <rect x="430" y="640" width="80" height="46" rx="4" />
+          <rect x="570" y="440" width="72" height="40" rx="4" />
+          <rect x="160" y="720" width="90" height="48" rx="4" />
+        </g>
+
+        <!-- IC pins on left/right of boxes -->
+        <g stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none">
+          <line x1="260" y1="105" x2="280" y2="105" />
+          <line x1="260" y1="115" x2="280" y2="115" />
+          <line x1="260" y1="125" x2="280" y2="125" />
+          <line x1="260" y1="135" x2="280" y2="135" />
+          <line x1="360" y1="105" x2="380" y2="105" />
+          <line x1="360" y1="115" x2="380" y2="115" />
+          <line x1="360" y1="125" x2="380" y2="125" />
+          <line x1="40" y1="240" x2="60" y2="240" />
+          <line x1="40" y1="252" x2="60" y2="252" />
+          <line x1="40" y1="264" x2="60" y2="264" />
+          <line x1="120" y1="240" x2="140" y2="240" />
+          <line x1="120" y1="252" x2="140" y2="252" />
+        </g>
+
+        <!-- Floating Angular "A" shapes — tiny -->
+        <g opacity="0.06" fill="white">
+          <polygon points="80,70 92,98 68,98" transform="scale(0.8) translate(-20,-10)" />
+          <polygon points="590,200 605,235 575,235" transform="scale(0.7)" />
+          <polygon points="160,800 174,832 146,832" transform="scale(0.6)" />
+          <polygon points="500,320 516,358 484,358" transform="scale(0.75)" />
+        </g>
+
+        <!-- Scattered dots — data particles -->
+        <g fill="rgba(221,0,49,0.2)">
+          <circle cx="50" cy="400" r="2" />
+          <circle cx="420" cy="160" r="1.5" />
+          <circle cx="610" cy="520" r="2" />
+          <circle cx="330" cy="700" r="1.5" />
+          <circle cx="110" cy="730" r="2" />
+          <circle cx="660" cy="320" r="1.5" />
+          <circle cx="240" cy="86" r="2" />
+          <circle cx="510" cy="780" r="2" />
+          <circle cx="390" cy="560" r="1.5" />
+          <circle cx="70" cy="860" r="2" />
+        </g>
+        <g fill="rgba(255,255,255,0.06)">
+          <circle cx="430" cy="60" r="1.5" />
+          <circle cx="155" cy="470" r="1" />
+          <circle cx="690" cy="600" r="1.5" />
+          <circle cx="240" cy="620" r="1" />
+          <circle cx="540" cy="380" r="1.5" />
+          <circle cx="90" cy="160" r="1" />
+          <circle cx="350" cy="860" r="1.5" />
+        </g>
+
+        <!-- Corner decoration arcs -->
+        <circle cx="0" cy="0" r="200" fill="none" stroke="rgba(221,0,49,0.06)" stroke-width="60" />
+        <circle cx="700" cy="900" r="240" fill="none" stroke="rgba(25,118,210,0.05)" stroke-width="80" />
+
+        <!-- Diagonal code lines (abstract) -->
+        <g stroke="rgba(255,255,255,0.04)" stroke-width="0.5">
+          <line x1="0" y1="900" x2="700" y2="0" />
+          <line x1="0" y1="800" x2="600" y2="0" />
+          <line x1="100" y1="900" x2="700" y2="100" />
+        </g>
+
+        <!-- Hexagonal mesh cluster (top right) -->
+        <g stroke="rgba(255,255,255,0.05)" stroke-width="0.5" fill="none" transform="translate(480,30)">
+          <polygon points="30,0 60,17 60,52 30,70 0,52 0,17" />
+          <polygon points="90,0 120,17 120,52 90,70 60,52 60,17" />
+          <polygon points="150,0 180,17 180,52 150,70 120,52 120,17" />
+          <polygon points="60,70 90,87 90,122 60,140 30,122 30,87" />
+          <polygon points="120,70 150,87 150,122 120,140 90,122 90,87" />
+        </g>
+
+        <!-- Hexagonal mesh cluster (bottom left) -->
+        <g stroke="rgba(221,0,49,0.07)" stroke-width="0.5" fill="none" transform="translate(-20,700)">
+          <polygon points="30,0 60,17 60,52 30,70 0,52 0,17" />
+          <polygon points="90,0 120,17 120,52 90,70 60,52 60,17" />
+          <polygon points="60,70 90,87 90,122 60,140 30,122 30,87" />
+        </g>
+      </svg>
+
+      <!-- Brand -->
+      <div class="left-content">
+        <div class="auth-brand">
+          <div class="brand-logomark">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div class="brand-name">NgTasks</div>
+          <div class="brand-ver">v20</div>
+        </div>
+
+        <div class="hero-block">
+          <div class="hero-eyebrow">Angular 20 Platform</div>
+          <h1 class="hero-heading">
+            Manage tasks<br>
+            at <em>Angular</em><br>
+            speed.
+          </h1>
+          <p class="hero-sub">
+            A modern, reactive task management system built on Angular 20's standalone components, signals, and the
+            latest
+            DI primitives.
+          </p>
+          <div class="feat-pills">
+            <div class="feat-pill"><i class="bi bi-lightning-charge"></i> Signals-based state</div>
+            <div class="feat-pill"><i class="bi bi-shield-check"></i> Route guards</div>
+            <div class="feat-pill"><i class="bi bi-layout-sidebar"></i> Lazy modules</div>
+            <div class="feat-pill"><i class="bi bi-phone"></i> Fully responsive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+       RIGHT PANEL — Login / Sign-Up Forms
+  ════════════════════════════════════════ -->
+    <div class="auth-right">
+      <div class="form-panel">
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <div class="auth-tab" [class.active]="tabName === 'login'" (click)="switchTab('login')">
+            Sign in
+          </div>
+
+          <div class="auth-tab" [class.active]="tabName === 'signup'" (click)="switchTab('signup')">
+            Create account
+          </div>
+        </div>
+        <!-- LOGIN -->
+        <div class="auth-view" [ngClass]="{'active': tabName == 'login' || tabName == 'signup'}">
+          @if (tabName === 'login') {
+          <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+            <div class="form-heading">Welcome back</div>
+            <div class="form-subheading">Sign in to your NgTasks workspace</div>
+            <!-- OAuth -->
+            <div class="oauth-row">
+              <button class="btn-oauth" onclick="oauthClick('GitHub')">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                GitHub
+              </button>
+              <button class="btn-oauth" onclick="oauthClick('Google')">
+                <svg viewBox="0 0 24 24">
+                  <path fill="#4285F4"
+                    d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z" />
+                  <path fill="#34A853"
+                    d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.565 24 12.255 24z" />
+                  <path fill="#FBBC05"
+                    d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 000 10.76l3.98-3.09z" />
+                  <path fill="#EA4335"
+                    d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.69 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z" />
+                </svg>
+                Google
+              </button>
+            </div>
+            <div class="or-divider">or continue with email</div>
+            <!-- Email -->
+            <div class="field-group">
+              <label class="field-label">Email address <span class="req">*</span></label>
+              <div class="field-wrap">
+                <i class="bi bi-envelope field-icon"></i>
+                <input type="email" id="l-email" class="field-input" placeholder="you@company.com"
+                  formControlName="email">
+              </div>
+              <div class="field-error" id="l-email-err"><i class="bi bi-exclamation-circle"></i><span>Enter a valid
+                  email.</span></div>
+            </div>
+            <!-- Password -->
+            <div class="field-group">
+              <label class="field-label">Password <span class="req">*</span></label>
+              <div class="field-wrap">
+                <i class="bi bi-lock field-icon"></i>
+                <input type="password" id="l-pw" class="field-input" placeholder="Your password"
+                  formControlName="password">
+                <button class="toggle-pw" type="button">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+              <div class="field-error" id="l-pw-err"><i class="bi bi-exclamation-circle"></i><span>Password is
+                  required.</span></div>
+            </div>
+
+            <div class="extras-row">
+              <div class="check-wrap">
+                <div class="custom-check"></div>
+                <span class="check-label">Remember me</span>
+              </div>
+              <span class="forgot-link">Forgot password?</span>
+            </div>
+
+
+            <button class="btn-submit">
+              <span class="spinner" id="l-spinner"></span>
+              <i class="bi bi-box-arrow-in-right" id="l-icon"></i>
+              <span id="l-btn-text">Sign in to NgTasks</span>
+            </button>
+
+            <div class="terms-note" style="margin-top: 20px;">
+              Don't have an account?
+              <a (click)="switchTab('signup')" style="cursor:pointer;">Create one free</a>
+            </div>
+
+          </form>
+          }
+          <!-- SIGNUP -->
+          @else if (tabName === 'signup') {
+          <!-- Success screen (hidden by default) -->
+          <form [formGroup]="signupForm" (ngSubmit)="submitSignup()">
+            <div id="signup-form">
+              <div class="form-heading">Create account</div>
+              <div class="form-subheading">Start managing tasks with Angular 20 power</div>
+
+              <!-- OAuth -->
+              <div class="oauth-row">
+                <button class="btn-oauth" onclick="oauthClick('GitHub')">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                  GitHub
+                </button>
+                <button class="btn-oauth" onclick="oauthClick('Google')">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="#4285F4"
+                      d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z" />
+                    <path fill="#34A853"
+                      d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.565 24 12.255 24z" />
+                    <path fill="#FBBC05"
+                      d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 000 10.76l3.98-3.09z" />
+                    <path fill="#EA4335"
+                      d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.69 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z" />
+                  </svg>
+                  Google
+                </button>
+              </div>
+
+              <div class="or-divider">or register with email</div>
+
+              <div class="field-row">
+                <div class="field-group">
+                  <label class="field-label">First name <span class="req">*</span></label>
+                  <div class="field-wrap">
+                    <i class="bi bi-person field-icon"></i>
+                    <input type="text" id="s-fname" class="field-input" placeholder="First Name" formControlName="firstName">
+                    <!-- oninput="clearErr('s-fname','s-fname-err')" -->
+                  </div>
+                  <div class="field-error" id="s-fname-err"><i
+                      class="bi bi-exclamation-circle"></i><span>Required.</span>
+                  </div>
+                </div>
+                <div class="field-group">
+                  <label class="field-label">Last name <span class="req">*</span></label>
+                  <div class="field-wrap">
+                    <i class="bi bi-person field-icon"></i>
+                    <input type="text" id="s-lname" class="field-input" placeholder="Last Name"
+                      formControlName="lastName">
+                    <!-- oninput="clearErr('s-lname','s-lname-err')" -->
+                  </div>
+                  <div class="field-error" id="s-lname-err"><i
+                      class="bi bi-exclamation-circle"></i><span>Required.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">Email address <span class="req">*</span></label>
+                <div class="field-wrap">
+                  <i class="bi bi-envelope field-icon"></i>
+                  <input type="email" id="s-email" class="field-input" placeholder="mail@company.com"
+                    formControlName="email">
+                  <!-- oninput="clearErr('s-email','s-email-err')" -->
+                </div>
+                <div class="field-error" id="s-email-err"><i class="bi bi-exclamation-circle"></i><span>Enter a valid
+                    email.</span></div>
+              </div>
+              <!-- Password -->
+              <div class="field-group">
+                <label class="field-label">Password <span class="req">*</span></label>
+                <div class="field-wrap">
+                  <i class="bi bi-lock field-icon"></i>
+                  <input type="password" id="s-pw" class="field-input" placeholder="Min. 8 characters"
+                    formControlName="password" (input)="checkStrength()">
+                  <button class="toggle-pw" type="button" (click)="togglePw('password')">
+                    <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                  </button>
+                </div>
+                <div class="pw-strength-bar">
+                  <div class="pw-seg" [class.active]="strength >= 1"></div>
+                  <div class="pw-seg" [class.active]="strength >= 2"></div>
+                  <div class="pw-seg" [class.active]="strength >= 3"></div>
+                  <div class="pw-seg" [class.active]="strength >= 4"></div>
+                </div>
+                <div class="pw-strength-label">{{ strengthLabel }}</div>
+                <div class="field-error" *ngIf="password.invalid && (password.dirty || password.touched)">
+                  <i class="bi bi-exclamation-circle"></i>
+                  <span>Password must be at least 8 characters.</span>
+                </div>
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="field-group">
+                <label class="field-label">Confirm Password <span class="req">*</span></label>
+                <div class="field-wrap">
+                  <i class="bi bi-lock-fill field-icon"></i>
+                  <input type="password" id="s-pw2" class="field-input" placeholder="Repeat password"
+                    formControlName="confirmPassword">
+                  <button class="toggle-pw" type="button" (click)="togglePw('confirmPassword')">
+                    <i class="bi" [ngClass]="showConfirmPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                  </button>
+                </div>
+                <div class="field-error"
+                  *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                  <i class="bi bi-exclamation-circle"></i>
+                  <span>Passwords do not match.</span>
+                </div>
+              </div>
+              <!-- <div class="field-group">
+              <label class="field-label">Password <span class="req">*</span></label>
+              <div class="field-wrap">
+                <i class="bi bi-lock field-icon"></i>
+                <input type="password" id="s-pw" class="field-input" placeholder="Min. 8 characters"
+                  formControlName="password">
+                <button class="toggle-pw" type="button">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+              <div class="pw-strength-bar">
+                <div class="pw-seg" id="pw-s1"></div>
+                <div class="pw-seg" id="pw-s2"></div>
+                <div class="pw-seg" id="pw-s3"></div>
+                <div class="pw-seg" id="pw-s4"></div>
+              </div>
+              <div class="pw-strength-label" id="pw-label">Enter a password</div>
+              <div class="field-error" id="s-pw-err"><i class="bi bi-exclamation-circle"></i><span>Password must be at
+                  least 8 characters.</span></div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">Confirm password <span class="req">*</span></label>
+              <div class="field-wrap">
+                <i class="bi bi-lock-fill field-icon"></i>
+                <input type="password" id="s-pw2" class="field-input" placeholder="Repeat password">
+                <button class="toggle-pw" type="button">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+              <div class="field-error" id="s-pw2-err"><i class="bi bi-exclamation-circle"></i><span>Passwords do not
+                  match.</span></div>
+            </div> -->
+
+              <div class="check-wrap" id="terms-check" style="margin-top:4px;">
+                <div class="custom-check"></div>
+                <span class="check-label">I agree to the <a href="#" style="color:#DD0031;text-decoration:none;">Terms
+                    of
+                    Service</a> and <a href="#" style="color:#DD0031;text-decoration:none;">Privacy
+                    Policy</a></span>
+              </div>
+              <div class="field-error" id="s-terms-err" style="margin-top:6px;"><i
+                  class="bi bi-exclamation-circle"></i><span>Please accept the terms.</span></div>
+
+              <button class="btn-submit">
+                <span class="spinner" id="s-spinner"></span>
+                <i class="bi bi-person-plus" id="s-icon"></i>
+                <span id="s-btn-text">Create my account</span>
+              </button>
+
+              <div class="terms-note">
+                Already have an account?
+                <a (click)="switchTab('login')" style="cursor:pointer;">Sign in instead</a>
+              </div>
+            </div>
+          </form>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

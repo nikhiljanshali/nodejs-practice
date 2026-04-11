@@ -1,0 +1,49 @@
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+/* Hover */
+.custom-checkbox:hover {
+  border-color: #6366f1;
+}
+
+/* Checked */
+.custom-checkbox.checked {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #fff;
+}
+
+/* Indeterminate */
+.custom-checkbox.indeterminate {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #fff;
+}
+
+/* Icon */
+.custom-checkbox i {
+  font-size: 12px;
+  display: none;
+}
+
+/* Show icon when active */
+.custom-checkbox.checked i,
+.custom-checkbox.indeterminate i {
+  display: block;
+}
+
+/* Optional: center inside table */
+td .custom-checkbox,
+th .custom-checkbox {
+  margin: auto;
+}

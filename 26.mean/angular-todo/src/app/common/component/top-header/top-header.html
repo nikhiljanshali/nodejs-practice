@@ -1,0 +1,55 @@
+<div class="topbar">
+  <div>
+    <div class="topbar-title">{{ pageTitle }}</div>
+    <div class="topbar-breadcrumb">
+      NgTasks &rsaquo; <span>{{ breadcrumb }}</span>
+    </div>
+  </div>
+
+  <!-- Route indicator -->
+  <!-- <div style="margin-left: 20px; display: flex; align-items: center;">
+    <div class="route-pill">
+      <span style="font-size:10px">router&nbsp;</span>
+      <span class="path-part">{{ routePath }}</span>
+    </div>
+  </div> -->
+
+  <div class="topbar-actions">
+
+    <!-- <button class="btn-ghost">
+      <i class="bi bi-grid-3x3-gap"></i>
+    </button>-->
+
+    <!-- <button class="btn-primary-ng" (click)="createNewTodo()">
+      <i class="bi bi-plus-lg"></i><span>New Todo</span>
+    </button> -->
+
+    <button class="btn-primary-ng" (click)="bookAppointment()">
+      <i class="bi bi-plus-lg"></i><span>Book Appointment</span>
+    </button>
+
+    <!-- User Dropdown -->
+    <div class="topbar-user" (click)="toggleDropdown($event)" tabindex="0">
+
+      <div class="topbar-user-avatar">
+        {{userDetails?.firstName.toUpperCase() | slice:0:1}}{{userDetails?.lastName.toUpperCase() | slice:0:1}}
+      </div>
+
+      <span class="topbar-user-name">
+        <!-- {{userDetails?.email}} -->
+        {{userDetails?.firstName.toUpperCase()}} {{userDetails?.lastName.toUpperCase()}}
+      </span>
+
+      <i class="bi bi-chevron-down dropdown-icon"></i>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown-menu" (click)="$event.stopPropagation()">
+        <button (click)="goToProfile()">Profile</button>
+        <button (click)="goToSettings()">Settings</button>
+        <button (click)="logout()">Logout</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

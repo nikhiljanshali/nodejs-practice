@@ -1,0 +1,122 @@
+<div class="back-link" (click)="goBack()">
+  <i class="bi bi-arrow-left"></i> Back to Appointments
+</div>
+
+<form [formGroup]="appointmentForm" (ngSubmit)="submitForm()">
+  <div class="card doctor-form-card">
+
+    <!-- Header -->
+    <div class="card-header-custom">
+      <div
+        style="width:36px;height:36px;border-radius:9px;background:rgba(221,0,49,0.08);display:flex;align-items:center;justify-content:center;">
+        <i class="bi bi-calendar-plus" style="color:var(--ng-red);font-size:18px;"></i>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Create Appointment</div>
+        <div style="font-size:12px;color:var(--text-muted);">Fill appointment details</div>
+      </div>
+      <div style="margin-left:auto;">
+        <!-- <span class="ng-tag">CreateTodoComponent</span> -->
+        <button type="button" class="btn-ghost" (click)="generateDummyData()">Patch Dummys</button>
+      </div>
+    </div>
+
+    <div class="card-body-custom">
+
+      <!-- ================= BASIC INFO ================= -->
+      <div class="form-section-title">Appointment Details</div>
+
+      <div style="display:grid;grid-template-columns: repeat(3, 1fr);gap:16px;">
+
+        <!-- Patient -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Patient <span class="required">*</span></label>
+          <select class="form-control-ng" formControlName="patient">
+            <option value="">Select Patient</option>
+            <option *ngFor="let p of patients" [value]="p._id">
+              {{ p.firstName }} {{ p.lastName }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Doctor -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Doctor <span class="required">*</span></label>
+          <select class="form-control-ng" formControlName="doctor">
+            <option value="">Select Doctor</option>
+            <option *ngFor="let d of doctors" [value]="d._id">
+              Dr. {{ d.firstName }} {{ d.lastName }} - [{{ d.licenseNumber }}] - [{{ d.specialization }}]
+            </option>
+          </select>
+        </div>
+
+        <!-- Date -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Appointment Date</label>
+          <input type="date" class="form-control-ng" formControlName="appointmentDate">
+        </div>
+
+        <!-- Start Time -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Start Time</label>
+          <input type="time" class="form-control-ng" formControlName="startTime">
+        </div>
+
+        <!-- End Time -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">End Time</label>
+          <input type="time" class="form-control-ng" formControlName="endTime">
+        </div>
+
+        <!-- Status -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Status</label>
+          <select class="form-control-ng" formControlName="status">
+            <option value="scheduled">Scheduled</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="no-show">No Show</option>
+          </select>
+        </div>
+
+        <!-- Consultation Type -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Consultation Type</label>
+          <select class="form-control-ng" formControlName="consultationType">
+            <option value="in-person">In Person</option>
+            <option value="video">Video</option>
+            <option value="phone">Phone</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- ================= REASON ================= -->
+      <div class="form-section-title">Reason</div>
+
+      <div class="form-group-ng">
+        <textarea class="form-control-ng" formControlName="reason" rows="3"
+          placeholder="Enter symptoms or reason"></textarea>
+      </div>
+
+      <!-- ================= NOTES ================= -->
+      <div class="form-section-title">Doctor Notes</div>
+
+      <div class="form-group-ng">
+        <textarea class="form-control-ng" formControlName="notes" rows="3" placeholder="Enter notes"></textarea>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="card-footer">
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button type="button" class="btn-ghost" (click)="goBack()">Cancel</button>
+        <button type="submit" class="btn-primary-ng">
+          <i class="bi bi-check-lg"></i> Save Appointment
+        </button>
+      </div>
+    </div>
+
+  </div>
+</form>

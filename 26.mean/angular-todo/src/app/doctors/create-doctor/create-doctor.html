@@ -1,0 +1,168 @@
+<div class="back-link" (click)="backToList()">
+  <i class="bi bi-arrow-left"></i> Back to All Doctors
+</div>
+<form [formGroup]="doctorForm" (ngSubmit)="submitCreate()">
+  <div class="card doctor-form-card">
+    <div class="card-header-custom">
+      <div
+        style="width:36px;height:36px;border-radius:9px;background:rgba(221,0,49,0.08);display:flex;align-items:center;justify-content:center;">
+        <i class="bi bi-plus-circle" style="color:var(--ng-red);font-size:18px;"></i>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Create New doctor</div>
+        <div style="font-size:12px;color:var(--text-muted);">Fill in the details below to add a doctor</div>
+      </div>
+      <div style="margin-left:auto;">
+        <!-- <span class="ng-tag">CreateTodoComponent</span> -->
+        <button type="button" class="btn-ghost" (click)="generateDummyData()">Patch Dummys</button>
+      </div>
+    </div>
+    <div class="card-body-custom">
+
+      <!-- ================= BASIC INFO ================= -->
+      <div class="form-section-title">Doctor Information</div>
+
+      <div style="display:grid;grid-template-columns: repeat(3, 1fr);gap:16px;">
+
+        <!-- Name -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">First name <span class="required">*</span></label>
+          <input type="text" class="form-control-ng" formControlName="firstName" placeholder="Enter doctor name">
+        </div>
+
+        <!-- Name -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Last Name <span class="required">*</span></label>
+          <input type="text" class="form-control-ng" formControlName="lastName" placeholder="Enter doctor name">
+        </div>
+
+        <!-- Specialization -->
+        <!-- <div class="form-group-ng">
+          <label class="form-label-ng">Specialization <span class="required">*</span></label>
+          <input type="text" class="form-control-ng" formControlName="specialization" placeholder="e.g. Cardiologist">
+        </div> -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Specialization <span class="required">*</span></label>
+          <select class="form-control-ng" formControlName="specialization">
+            <option value="">Select Specialization</option>
+            <option *ngFor="let bg of specializations" [value]="bg">{{bg}}</option>
+          </select>
+        </div>
+
+        <!-- License -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">License Number <span class="required">*</span></label>
+          <div class="input-group-ng">
+            <input type="text" class="form-control-ng" formControlName="licenseNumber"
+              placeholder="Enter license number">
+            <button type="button" class="btn-ng" (click)="generateLicense()">Generate</button>
+          </div>
+        </div>
+
+
+        <!-- Hospital -->
+        <!-- <div class="form-group-ng">
+          <label class="form-label-ng">Hospital</label>
+          <input type="text" class="form-control-ng" formControlName="hospital" placeholder="Enter hospital name">
+        </div> -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Hospital <span class="required">*</span></label>
+          <select class="form-control-ng" formControlName="hospital">
+            <option value="">Select Hospital</option>
+            <option *ngFor="let bg of hospitals" [value]="bg">{{bg}}</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- ================= CONTACT INFO ================= -->
+      <div class="form-section-title">Contact Information</div>
+
+      <div formGroupName="contact" style="display:grid;grid-template-columns: repeat(3, 1fr);gap:16px;">
+
+        <!-- Phone -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Phone</label>
+          <input type="text" class="form-control-ng" formControlName="phone" placeholder="Enter phone number">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Email</label>
+          <input type="email" class="form-control-ng" formControlName="email" placeholder="Enter email">
+        </div>
+
+        <!-- Address -->
+        <div class="form-group-ng" style="grid-column: 1 / -1;">
+          <label class="form-label-ng">Address</label>
+          <input type="text" class="form-control-ng" formControlName="address" placeholder="Enter address">
+        </div>
+
+      </div>
+
+      <!-- ================= AVAILABILITY ================= -->
+      <div class="form-section-title">Availability</div>
+
+      <div formArrayName="availability">
+
+        <div *ngFor="let slot of availabilityControls.controls; let i = index" [formGroupName]="i"
+          style="display:grid;grid-template-columns: repeat(4, 1fr);gap:16px;margin-bottom:10px;">
+
+          <!-- Day -->
+          <div class="form-group-ng">
+            <label class="form-label-ng">Day</label>
+            <select class="form-control-ng" formControlName="day">
+              <option value="">Select Day</option>
+              <option *ngFor="let day of ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']"
+                [value]="day">
+                {{day}}
+              </option>
+            </select>
+          </div>
+
+          <!-- From -->
+          <div class="form-group-ng">
+            <label class="form-label-ng">From</label>
+            <input type="time" class="form-control-ng" formControlName="from">
+          </div>
+
+          <!-- To -->
+          <div class="form-group-ng">
+            <label class="form-label-ng">To</label>
+            <input type="time" class="form-control-ng" formControlName="to">
+          </div>
+
+          <!-- Remove Button -->
+          <div class="form-group-ng" style="display:flex;align-items:end;">
+            <button type="button" class="btn-ghost" (click)="removeAvailability(i)">
+              Remove
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Add Slot -->
+        <button type="button" class="btn-primary-ng" (click)="addAvailability()">
+          + Add Availability
+        </button>
+
+      </div>
+
+      <!-- ================= RATING ================= -->
+      <div class="form-section-title mt-3">Rating</div>
+
+      <div style="max-width:200px;">
+        <input type="number" class="form-control-ng" formControlName="rating" min="0" max="5" step="0.1">
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;gap:10px;justify-content:flex-end;padding-top:10px;">
+        <button type="button" class="btn-ghost" (click)="goBack()">Cancel</button>
+        <button type="submit" class="btn-primary-ng">
+          <i class="bi bi-check-lg"></i> Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,45 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+.navbar {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  color: #fff;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.container {
+  padding: 20px;
+}
+
+.form input {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  width: 250px;
+}
+
+button {
+  padding: 8px 15px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+}

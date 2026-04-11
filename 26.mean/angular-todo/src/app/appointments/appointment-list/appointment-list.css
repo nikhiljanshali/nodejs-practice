@@ -1,0 +1,86 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Scheduled */
+.status-scheduled {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+
+/* Completed */
+.status-completed {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* Cancelled */
+.status-cancelled {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* No Show */
+.status-noshow {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* Default */
+.status-default {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.consult-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* In-Person */
+.consult-inperson {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* Video */
+.consult-video {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+/* Phone */
+.consult-phone {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* Default */
+.consult-default {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.sub-row td {
+  background: #f9fafb;
+  padding: 10px;
+}
+
+.sub-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}

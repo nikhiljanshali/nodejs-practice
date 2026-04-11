@@ -1,0 +1,94 @@
+<div class="back-link" (click)="backToList()">
+  <i class=" bi bi-arrow-left"></i> Back to All Todos
+</div>
+<form [formGroup]="todoForm" (ngSubmit)="submitEdit()">
+  <div class="card form-card">
+    <div class="card-header-custom">
+      <div
+        style="width:36px;height:36px;border-radius:9px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;">
+        <i class="bi bi-pencil-square" style="color:var(--info);font-size:18px;"></i>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Edit Todo</div>
+        <div style="font-size:12px;color:var(--text-muted);" id="edit-subtitle">Updating task</div>
+      </div>
+      <!-- <div style="margin-left:auto;"><span class="ng-tag">EditTodoComponent</span></div> -->
+    </div>
+    <div class="card-body-custom">
+      <div class="form-section-title">Task Information</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <!-- Title -->
+        <div class="form-group-ng" style="grid-column:1/-1;">
+          <label class="form-label-ng">Title <span class="required">*</span></label>
+          <input type="text" class="form-control-ng" formControlName="title" placeholder="Enter task title…">
+
+          <div class="form-error" *ngIf="todoForm.get('title')?.touched && todoForm.get('title')?.invalid">
+            Title is required.
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group-ng" style="grid-column:1/-1;">
+          <label class="form-label-ng">Description</label>
+          <textarea class="form-control-ng" formControlName="description" placeholder="Describe the task…"></textarea>
+        </div>
+
+        <!-- Status -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Status <span class="required">*</span></label>
+          <select class="form-control-ng" formControlName="status">
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+
+        <!-- Priority -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Priority <span class="required">*</span></label>
+          <select class="form-control-ng" formControlName="priority">
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+
+        <!-- Due Date -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Due Date <span class="required">*</span></label>
+          <input type="date" class="form-control-ng" formControlName="dueDate">
+
+          <div class="form-error" *ngIf="todoForm.get('dueDate')?.touched && todoForm.get('dueDate')?.invalid">
+            Due date is required.
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-group-ng">
+          <label class="form-label-ng">Tags</label>
+          <input type="text" class="form-control-ng" formControlName="tags" placeholder="design, backend, bug…">
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="card-footer">
+      <!-- Buttons -->
+      <div style="display:flex;gap:10px;justify-content:flex-end;padding-top:10px;">
+        <button type="button" class="btn-ghost" (click)="goBack()">Cancel</button>
+        <button type="submit" class="btn-primary-ng">
+          <i class="bi bi-check-lg"></i> Save Changes
+        </button>
+      </div>
+      <!-- <div style="display:flex;gap:10px;justify-content:flex-end;padding-top:10px;border-top:1px solid var(--border);">
+      <button class="btn-ghost" onclick="navigate('list')">Cancel</button>
+      <button class="btn-primary-ng" onclick="submitEdit()">
+        <i class="bi bi-check-lg"></i> Save Changes
+      </button>
+    </div> -->
+    </div>
+  </div>
+</form>

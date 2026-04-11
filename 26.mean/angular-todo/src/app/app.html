@@ -1,0 +1,39 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" [fullScreen]="true">
+  <ng-template ngxSpinnerTemplate>
+    <img src="assets/images/gif/cog14.svg" width="80" />
+  </ng-template>
+</ngx-spinner>
+<div id="app">
+
+  @if (!isAuthPage()) {
+  <!-- ✅ Main Layout -->
+  <div class="screen active">
+    <div id="app-inner">
+
+      <app-common-bar></app-common-bar>
+
+      <div class="main">
+        <app-top-header></app-top-header>
+
+        <div class="page-content">
+          <div class="view active">
+
+            <!-- Load only when condition is TRUE -->
+            <app-status-bar></app-status-bar>
+
+            <router-outlet></router-outlet>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  } @else {
+  <!-- ✅ Auth Layout (no extra components) -->
+  <div class="auth-layout">
+    <router-outlet></router-outlet>
+  </div>
+  }
+
+</div>

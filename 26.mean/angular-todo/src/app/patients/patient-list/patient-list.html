@@ -1,0 +1,134 @@
+<!-- Filter bar (TodoListComponent filters) -->
+<div class="filter-bar">
+  <div class="search-wrap">
+    <i class="bi bi-search"></i>
+    <input type="text" class="search-input" id="filter-search" placeholder="Search by title or description…"
+      (input)="onSearchChange($event)">
+  </div>
+  <select id="filter-priority" (change)="bloodGroupFilter = $any($event.target).value; applyFilters()">
+    <option value="">Blood Group</option>
+    <option *ngFor="let bg of bloodGroups" [value]="bg">{{bg}}</option>
+  </select>
+  <select id="filter-priority" (change)="skinTypeFilter = $any($event.target).value; applyFilters()">
+    <option value="">Skin Type</option>
+    <option *ngFor="let type of skinTypes" [value]="type">{{type}}</option>
+  </select>
+  <select id="filter-priority" (change)="allergyFilter = $any($event.target).value; applyFilters()">
+    <option value="">Allergy</option>
+    <option *ngFor="let allergy of allergiesList" [value]="allergy">{{allergy}}</option>
+  </select>
+  <select id="filter-priority" (change)="medicationFilter = $any($event.target).value; applyFilters()">
+    <option value="">Medication</option>
+    <option *ngFor="let med of medicationsList" [value]="med">{{med}}</option>
+  </select>
+  <select id="filter-priority" (change)="diseaseFilter = $any($event.target).value; applyFilters()">
+    <option value="">Select Disease</option>
+    <option *ngFor="let dis of diseasesList" [value]="dis">{{dis}}</option>
+  </select>
+  <input type="date" id="filter-date" (change)="onDateChange($event)" title="Filter by due date"
+    style="font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-body);color:var(--text-primary);outline:none;">
+  <button class="btn-ghost" (click)="clearFilters()" title="Clear filters">
+    <i class="bi bi-x-circle"></i> Clear
+  </button>
+</div>
+
+<!-- Table card -->
+<div class="card">
+  <div class="card-header-custom">
+    <i class="bi bi-person-lines-fill" style="color:var(--ng-red);font-size:16px;"></i>
+    <div style="font-size:14px;font-weight:600;">Patient List ({{ filteredPatients.length }} items)</div>
+    <div style="margin-left:auto;">
+      <button class="btn-ghost" (click)="creatNewPatient()" title="Clear filters">
+        <i class="bi bi-person-plus-fill"></i> Add Patient
+      </button>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto;" class="card-body p-0">
+    <table class="todo-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>DOB</th>
+          <th>Email</th>
+          <th>Blood Group</th>
+          <th>Skin Type</th>
+          <th>Allergies</th>
+          <th>Diseases</th>
+          <th>Medications</th>
+          <th style="text-align: end;">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @if (filteredPatients && filteredPatients.length > 0) {
+        @for (item of filteredPatients; track item._id; let i = $index) {
+        <tr>
+          <td class="title-cell">{{ item.firstName }}</td>
+          <td class="title-cell">{{ item.lastName }}</td>
+          <td> {{ item.age }} </td>
+          <td>
+            <i *ngIf="item.gender === 'Male'" class="bi bi-gender-male text-primary"></i>
+            <i *ngIf="item.gender === 'Female'" class="bi bi-gender-female text-danger"></i>
+            <i *ngIf="item.gender === 'Other'" class="bi bi-gender-ambiguous text-warning"></i>
+          </td>
+          <td> {{ item.dateofBirth }} </td>
+          <td> {{ item.email }} </td>
+          <td>
+            <span class="blood-group" [ngClass]="getBloodGroupClass(item.bloodGroup)">
+              <i class="bi bi-droplet-fill"></i>
+              {{ item.bloodGroup }}
+            </span>
+          </td>
+          <td>
+            <span class="badge skin" [ngClass]="getSkinTypeClass(item.skinType)">
+              <i class="bi bi-palette-fill"></i>
+              {{ item.skinType }}
+            </span>
+          </td>
+
+          <td>
+            <span class="badge allergy" [ngClass]="getAllergyClass(item.allergies)">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              {{ item.allergies }}
+            </span>
+          </td>
+
+          <td>
+            <span class="badge disease" [ngClass]="getDiseaseClass(item.diseases)">
+              <i class="bi bi-virus"></i>
+              {{ item.diseases }}
+            </span>
+          </td>
+
+          <td>
+            <span class="badge medication" [ngClass]="getMedicationClass(item.medication)">
+              <i class="bi bi-capsule"></i>
+              {{ item.medication }}
+            </span>
+          </td>
+          <td class="actions-cell">
+            <button class="btn-icon" (click)="editPatient(item)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn-icon" (click)="deletePatient(item)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+
+        </tr>
+        }
+        } @else {
+        <tr>
+          <td colspan="9" style="text-align:center; padding:20px; color:#999;">
+            No todos found.
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

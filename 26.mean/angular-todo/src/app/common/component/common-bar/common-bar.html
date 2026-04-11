@@ -1,0 +1,79 @@
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+    </div>
+    <div>
+      <div class="brand-text">NgTasks</div>
+    </div>
+    <div class="brand-version" style="margin-left:2px">v20</div>
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="nav-section-label">Todos</div>
+    <div class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-check2-square"></i>
+      <span>All Todos</span>
+    </div>
+    <div class="nav-item" routerLink="/create" routerLinkActive="active">
+      <i class="bi bi-plus-square"></i>
+      <span>Create Todo</span>
+    </div>
+    <div class="nav-item" routerLink="/createMultiple" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-list-task"></i>
+      <span>Create Multiple</span>
+    </div>
+
+    <div class="nav-section-label" style="margin-top:8px">Patients</div>
+    <div class="nav-item" routerLink="/patient/list" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-person-lines-fill"></i>
+      <span>Patient List</span>
+    </div>
+    <div class="nav-item" routerLink="/patient/create" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-person-plus-fill"></i>
+      <span>Add Patient</span>
+    </div>
+
+    <div class="nav-section-label" style="margin-top:8px">Doctors</div>
+    <div class="nav-item" routerLink="/doctor/list" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-person-lines-fill"></i>
+      <span>Doctors List</span>
+    </div>
+    <div class="nav-item" routerLink="/doctor/create" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-person-plus-fill"></i>
+      <span>Add Doctors</span>
+    </div>
+
+    <div class="nav-section-label" style="margin-top:8px">Appointments</div>
+    <div class="nav-item" routerLink="/appointment/list" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-person-lines-fill"></i>
+      <span>Appointment List</span>
+    </div>
+    <div class="nav-item" routerLink="/appointment/create" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-person-plus-fill"></i>
+      <span>Add Appointment</span>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="user-row">
+      <div class="user-avatar" id="sidebar-avatar">{{userDetails?.email.toUpperCase() | slice:0:2}}</div>
+      <div>
+        <div class="user-name" id="sidebar-username">{{userDetails?.email.toUpperCase()}}</div>
+        <div class="user-role">Developer</div>
+      </div>
+    </div>
+    <button class="logout-btn" (click)="logout()">
+      <i class="bi bi-box-arrow-left"></i><span>Sign out</span>
+    </button>
+  </div>
+</nav>

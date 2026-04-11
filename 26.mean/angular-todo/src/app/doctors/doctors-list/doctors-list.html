@@ -1,0 +1,156 @@
+<div class="filter-bar">
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <i class="bi bi-search"></i>
+    <input type="text" class="search-input" [(ngModel)]="searchQuery" (input)="applyFilters()"
+      placeholder="Search by name or specialization">
+  </div>
+
+  <!-- Specialization -->
+  <select [(ngModel)]="specializationFilter" (change)="applyFilters()">
+    <option value="">Specialization</option>
+    <option *ngFor="let sp of specializations" [value]="sp">{{sp}}</option>
+  </select>
+
+  <!-- Hospital -->
+  <select [(ngModel)]="hospitalFilter" (change)="applyFilters()">
+    <option value="">Hospital</option>
+    <option *ngFor="let h of hospitals" [value]="h">{{h}}</option>
+  </select>
+
+  <!-- Rating -->
+  <select [(ngModel)]="ratingFilter" (change)="applyFilters()">
+    <option value="">Rating</option>
+    <option value="4">4★ & above</option>
+    <option value="3">3★ & above</option>
+    <option value="2">2★ & above</option>
+  </select>
+
+  <!-- Availability -->
+  <select [(ngModel)]="availabilityDayFilter" (change)="applyFilters()">
+    <option value="">Available Day</option>
+    <option *ngFor="let day of availabilityDays" [value]="day">{{day}}</option>
+  </select>
+
+  <!-- Clear -->
+  <button class="btn-ghost" (click)="clearFilters()">
+    <i class="bi bi-x-circle"></i> Clear
+  </button>
+
+</div>
+
+<!-- Table card -->
+<div class="card">
+  <div class="card-header-custom">
+    <i class="bi bi-person-lines-fill" style="color:var(--ng-red);font-size:16px;"></i>
+    <div style="font-size:14px;font-weight:600;">Doctors List ({{ filteredDoctors.length }} items)</div>
+    <div style="margin-left:auto;">
+      <button class="btn-ghost" (click)="creatNewPatient()" title="Clear filters">
+        <i class="bi bi-person-plus-fill"></i> Add Doctor
+      </button>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto;" class="card-body p-0">
+    <table class="todo-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>License Number</th>
+          <th>Specialization</th>
+          <th>Hospital</th>
+          <th>Ratings</th>
+          <th style="text-align: end;">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @if (filteredDoctors && filteredDoctors.length > 0) {
+        @for (item of filteredDoctors; track item._id; let i = $index) {
+
+        <!-- Main Row -->
+        <tr>
+          <td>{{ item.firstName }}</td>
+          <td>{{ item.lastName }}</td>
+          <td>{{ item.licenseNumber }}</td>
+          <td>
+            <span class="spec-badge" [ngClass]="getSpecClass(item.specialization)">
+              <i class="bi" [ngClass]="getSpecIcon(item.specialization)"></i>
+              {{ item.specialization }}
+            </span>
+          </td>
+          <td>
+            <i class="bi bi-hospital me-1 text-danger"></i>
+            {{ item.hospital }}
+          </td>
+          <td>
+            <span *ngFor="let star of [].constructor(5); let i = index">
+              <i class="bi" [ngClass]="i < item.rating ? 'bi-star-fill text-warning' : 'bi-star text-muted'">
+              </i>
+            </span>
+          </td>
+
+          <td class="actions-cell">
+            <button class="btn-icon" (click)="toggleDetails(item)">
+              <i class="bi bi-info-circle"></i>
+            </button>
+            <button class="btn-icon" (click)="editPatient(item)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn-icon" (click)="deletePatient(item)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+
+        <!-- 🔽 Expand Row -->
+        @if (expandedDoctorId === item._id) {
+        <tr class="sub-row">
+          <td colspan="7">
+            <div class="sub-row-content">
+
+              <div class="sub-item">
+                <strong>📞 Phone:</strong><br>
+                {{ item.contact && item.contact.phone || '-' }}
+              </div>
+
+              <div class="sub-item">
+                <strong>📧 Email:</strong><br>
+                {{ item.contact && item.contact.email || '-' }}
+              </div>
+
+              <div class="sub-item">
+                <strong>📍 Address:</strong><br>
+                {{ item.contact && item.contact.address || '-' }}
+              </div>
+
+              <!-- Availability Full Row -->
+              <div class="sub-item full-width">
+                <strong>🗓 Availability:</strong>
+
+                <ul class="availability-list">
+                  @for (slot of item.availability; track $index) {
+                  <li>
+                    {{ slot.day }}: {{ slot.from }} - {{ slot.to }}
+                  </li>
+                  }
+                </ul>
+              </div>
+
+            </div>
+          </td>
+        </tr>
+        }
+
+        }
+        } @else {
+        <tr>
+          <td colspan="6" style="text-align:center;">No Doctors found.</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

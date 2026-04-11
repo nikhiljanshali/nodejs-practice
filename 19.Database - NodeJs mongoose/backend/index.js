@@ -19,11 +19,11 @@ app.get("/", async (req, res) => {
 
 app.post("/add-student", async (req, res) => {
   const newStudent = new studentModel(req.body);
-  const { name, age, email } = req.body;
+  const { firstname, lastname, age, email } = req.body;
 
-  if (!name || !age || !email) {
+  if (!firstname || !lastname || !age || !email) {
     return res.status(400).send({
-      message: "Name, age, and email are required",
+      message: "All fields are required",
     });
   }
   await newStudent.save();

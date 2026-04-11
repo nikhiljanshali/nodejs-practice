@@ -1,0 +1,147 @@
+<!-- Stats grid -->
+<div class="stats-grid" id="stats-grid">
+  @if(this.url == '/'){
+  <!-- Pending (Amber) -->
+  <div class="stat-card">
+    <div class="d-flex align-itmes-center justify-content-between">
+      <div class="stat-icon-wrap" style="background:#FFF7ED; color:#F97316;">
+        <i class="bi bi-hourglass-split"></i>
+      </div>
+      <div class="stat-value" style="color:#F97316">
+        {{todosCounter?.pending}}
+      </div>
+    </div>
+    <div class="stat-label">Pending</div>
+    <div class="stat-sub">Tasks awaiting action</div>
+  </div>
+
+  <!-- In Progress (Blue) -->
+  <div class="stat-card">
+    <div class="d-flex align-itmes-center justify-content-between">
+      <div class="stat-icon-wrap" style="background:#EFF6FF; color:#2563EB;">
+        <i class="bi bi-arrow-repeat"></i>
+      </div>
+      <div class="stat-value" style="color:#2563EB">
+        {{todosCounter?.inProgress}}
+      </div>
+    </div>
+    <div class="stat-label">In Progress</div>
+    <div class="stat-sub">Currently active</div>
+  </div>
+
+  <!-- Cancelled (Red) -->
+  <div class="stat-card">
+    <div class="d-flex align-itmes-center justify-content-between">
+      <div class="stat-icon-wrap" style="background:#FEF2F2; color:#DC2626;">
+        <i class="bi bi-x-circle"></i>
+      </div>
+      <div class="stat-value" style="color:#DC2626">
+        {{todosCounter?.cancelled}}
+      </div>
+    </div>
+    <div class="stat-label">Cancelled</div>
+    <div class="stat-sub">Stopped tasks</div>
+  </div>
+
+  <!-- Completed (Green) -->
+  <div class="stat-card">
+    <div class="d-flex align-itmes-center justify-content-between">
+      <div class="stat-icon-wrap" style="background:#ECFDF5; color:#16A34A;">
+        <i class="bi bi-check-circle"></i>
+      </div>
+      <div class="stat-value" style="color:#16A34A">
+        {{todosCounter?.completed}}
+      </div>
+    </div>
+    <div class="stat-label">Completed</div>
+    <div class="stat-sub">Done & closed</div>
+  </div>
+
+  <!-- Total (Purple) -->
+  <div class="stat-card">
+    <div class="d-flex align-itmes-center justify-content-between">
+      <div class="stat-icon-wrap" style="background:#F5F3FF; color:#7C3AED;">
+        <i class="bi bi-list-task"></i>
+      </div>
+      <div class="stat-value" style="color:#7C3AED">
+        {{todosCounter?.total}}
+      </div>
+    </div>
+
+    <div class="stat-label">Total</div>
+
+    <div style="margin-top:6px;">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" [style.width.%]="progressPercentage"
+          style="background: linear-gradient(90deg, #7C3AED, #A78BFA);"></div>
+      </div>
+
+      <div class="stat-sub" style="margin-top:4px">
+        {{ progressPercentage }}% complete
+      </div>
+    </div>
+  </div>
+  } @else if(this.url === '/patient/list' ){
+  <div class="stat-card">
+    <div class="d-flex align-itmes-center justify-content-between">
+      <div class="stat-icon-wrap" style="background:#FFF7ED; color:#F97316;">
+        <i class="bi bi-hourglass-split"></i>
+      </div>
+      <div class="stat-value" style="color:#F97316">
+        {{patientsCounter?.total}}
+      </div>
+    </div>
+    <div class="stat-label">Total</div>
+    <div class="stat-sub">Patients Registrered</div>
+  </div>
+  }
+  @else if(this.url === '/doctor/list' ){
+  <div class="stat-card">
+    <div class="d-flex align-itmes-center justify-content-between">
+      <div class="stat-icon-wrap" style="background:#FFF7ED; color:#F97316;">
+        <i class="bi bi-hourglass-split"></i>
+      </div>
+      <div class="stat-value" style="color:#F97316">
+        {{doctorCounter?.total}}
+      </div>
+    </div>
+    <div class="stat-label">Total</div>
+    <div class="stat-sub">Doctors Registrered</div>
+  </div>
+
+  <!-- <div class="stats-grid-2"> -->
+
+  @for (item of doctorCounter?.ratingDistribution; track item.ratingRange) {
+  <div class="stat-card">
+
+    <div class="d-flex align-items-center justify-content-between">
+
+      <!-- Icon -->
+      <div class="stat-icon-wrap" [ngStyle]="getRatingStyle(item.ratingRange).icon">
+        <i class="bi bi-star-fill"></i>
+      </div>
+
+      <!-- Count -->
+      <div class="stat-value" [ngStyle]="getRatingStyle(item.ratingRange).text">
+        {{ item.count }}
+      </div>
+
+    </div>
+
+    <!-- Label -->
+    <div class="stat-label">
+      {{ item.ratingRange }} ⭐ Rating
+    </div>
+
+    <!-- Sub Text -->
+    <div class="stat-sub">
+      {{ getRatingLabel(item.ratingRange) }}
+    </div>
+
+  </div>
+  }
+
+  <!-- </div> -->
+  }
+
+</div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand fw-bold">System Dashboard</a>
+            <button class="btn btn-outline-light" type="button" onclick="window.location.href='/login'">Login</button>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">Cookie Details</div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SessionID</td>
+                                    <td><%= cookieUserName%></td>
+                                </tr>
+                                <tr>
+                                    <td>UserPreferences</td>
+                                    <td>DarkMode:Enabled</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">Session Details</div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Status:</strong> Active</li>
+                            <li class="list-group-item"><strong>Last Login:</strong> 2023-10-27 10:00:00 UTC</li>
+                            <li class="list-group-item"><strong>User Name :</strong> <%= sessionUserName %></li>
+                            <li class="list-group-item"><strong>Memory Usage:</strong> 50%</li>
+                            <li class="list-group-item"><strong>Expiration:</strong> 30 Minutes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

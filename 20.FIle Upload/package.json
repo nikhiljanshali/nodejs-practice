@@ -1,0 +1,26 @@
+{
+  "name": "20.file-upload",
+  "version": "1.0.0",
+  "description": "Upload File In Node Ja",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Upload",
+    "File",
+    "In",
+    "Node",
+    "Js"
+  ],
+  "author": "Nikhil Janshali",
+  "license": "ISC",
+  "dependencies": {
+    "multer": "^2.1.1",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "express": "^5.2.1"
+  }
+}

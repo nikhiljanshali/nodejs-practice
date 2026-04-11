@@ -1,0 +1,134 @@
+<!-- Filter bar (TodoListComponent filters) -->
+<div class="filter-bar">
+  <div class="search-wrap">
+    <i class="bi bi-search"></i>
+    <input type="text" class="search-input" id="filter-search" placeholder="Search by title or description…"
+      (input)="onSearchChange($event)">
+  </div>
+  <select id="filter-status" (change)="onStatusChange($event)">
+    <option value="">All Statuses</option>
+    <option value="pending">Pending</option>
+    <option value="in-progress">In Progress</option>
+    <option value="completed">Completed</option>
+    <option value="cancelled">Cancelled</option>
+  </select>
+  <select id="filter-priority" (change)="onPriorityChange($event)">
+    <option value="">All Priorities</option>
+    <option value="high">High</option>
+    <option value="medium">Medium</option>
+    <option value="low">Low</option>
+  </select>
+  <input type="date" id="filter-date" (change)="onDateChange($event)" title="Filter by due date"
+    style="font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-body);color:var(--text-primary);outline:none;">
+  <button class="btn-ghost" (click)="clearFilters()" title="Clear filters">
+    <i class="bi bi-x-circle"></i> Clear
+  </button>
+</div>
+
+<!-- Table card -->
+<div class="card">
+  <div class="card-header-custom">
+    <i class="bi bi-table" style="color:var(--ng-red);font-size:16px;"></i>
+    <div style="font-size:14px;font-weight:600;">Todo List ({{ filteredTodos.length }} items)</div>
+    <div style="margin-left:auto;">
+      <!-- <span class="ng-tag">TodoListComponent</span> -->
+    </div>
+  </div>
+
+  <div style="overflow-x:auto;" class="card-body p-0">
+    <table class="todo-table">
+      <thead>
+        <tr>
+          <!-- Header Checkbox -->
+          <th>
+            <div class="custom-checkbox" [class.checked]="isAllSelected()" [class.indeterminate]="isIndeterminate()"
+              (click)="toggleAllCustom()">
+              <i class="bi" [ngClass]="{'bi-check': isAllSelected(),'bi-dash': isIndeterminate()}">
+              </i>
+            </div>
+          </th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Created Date</th>
+          <th>Mark Completed</th>
+          <th style="text-align: end;">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @if (filteredTodos && filteredTodos.length > 0) {
+        @for (item of filteredTodos; track item._id; let i = $index) {
+        <tr [class.completed-row]="item.completed">
+
+          <!-- Row Checkbox -->
+          <td>
+            <div class="custom-checkbox" [class.checked]="item.selected" (click)="toggleRow(item)">
+              <i class="bi bi-check"></i>
+            </div>
+          </td>
+
+          <td class="title-cell">{{ item.title }}</td>
+
+          <td>
+            <div class="desc-text" [title]="item.description">
+              {{ item.description }}
+            </div>
+          </td>
+
+          <td>
+            @if (item.status == 'completed') {
+            <span class="badge-status completed" style="color: green;">Completed</span>
+            } @else if (item.status == 'pending') {
+            <span class="badge-status pending" style="color: orange;">Pending</span>
+            } @else if (item.status == 'in-progress') {
+            <span class="badge-status in-progress" style="color: blue;">In Progress</span>
+            } @else if (item.status == 'cancelled') {
+            <span class="badge-status cancelled" style="color: red;">Cancelled</span>
+            }
+          </td>
+
+          <td>{{ item.date ? (item.date | date: 'dd/MM/yyyy') : '' }}</td>
+
+          <td>
+            @if (item.priority == 'high') {
+            <span class="badge-priority high" style="color:red;">High</span>
+            } @else if (item.priority == 'medium') {
+            <span class="badge-priority medium" style="color:orange;">Medium</span>
+            } @else {
+            <span class="badge-priority low" style="color:yellowgreen;">Low</span>
+            }
+          </td>
+
+          <td>{{ item.created ? (item.created | date: 'dd/MM/yyyy') : '' }}</td>
+
+          <td>
+            <div class="todo-check-wrap">
+              <div class="todo-checkbox" [class.checked]="item.completed" (click)="toggleComplete(item)"></div>
+            </div>
+          </td>
+
+          <td class="actions-cell">
+            <button class="btn-icon" (click)="editTodo(item._id!)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn-icon" (click)="deleteTodo(item._id!)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+
+        </tr>
+        }
+        } @else {
+        <tr>
+          <td colspan="9" style="text-align:center; padding:20px; color:#999;">
+            No todos found.
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
