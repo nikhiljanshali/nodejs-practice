@@ -15,6 +15,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  background: var(--bg-body);
 }
 /* Style 5 */
 ::-webkit-scrollbar-track {
@@ -653,9 +654,11 @@ body {
   --bg-body: #f0f2f5;
   --bg-card: #ffffff;
   --bg-sidebar: #0f172a;
+  --top-bar: #0f172a;
   --sidebar-text: #94a3b8;
   --sidebar-active: #ffffff;
   --sidebar-active-bg: rgba(221, 0, 49, 0.15);
+  --text-white: #ffffff;
   --text-primary: #0f172a;
   --text-secondary: #64748b;
   --text-muted: #94a3b8;
@@ -862,8 +865,9 @@ body {
 }
 .topbar {
   height: var(--header-h);
-  background: var(--bg-card);
+  background: var(--top-bar);
   border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
   display: flex;
   align-items: center;
   padding: 0 24px;
@@ -875,7 +879,7 @@ body {
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.3px;
-  color: var(--text-primary);
+  color: var(--text-white);
 }
 .topbar-breadcrumb {
   font-size: 12px;
@@ -1552,8 +1556,8 @@ textarea.form-control-ng {
 .route-pill {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  background: #0f172a;
-  color: #94a3b8;
+  background: var(--sidebar-active);
+  color: var(--text-primary);
   padding: 3px 10px;
   border-radius: 20px;
   display: inline-flex;
@@ -1561,7 +1565,7 @@ textarea.form-control-ng {
   gap: 5px;
 }
 .route-pill .path-part {
-  color: #e2e8f0;
+  color: var(--ng-red-dark);
 }
 .ng-tag {
   font-family: 'DM Mono', monospace;
@@ -1583,6 +1587,7 @@ textarea.form-control-ng {
   border: 1px solid var(--border);
   cursor: pointer;
   transition: background var(--transition);
+  background-color: var(--text-white);
 }
 .topbar-user:hover {
   background: var(--bg-body);

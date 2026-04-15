@@ -8,7 +8,8 @@ export const environment = {
     todos: '/todos',
     patient: '/patient',
     doctor: '/doctor',
-    appointment: '/appointment'
+    appointment: '/appointment',
+    common: '/common'
   },
   features: {
     enableNotifications: true,

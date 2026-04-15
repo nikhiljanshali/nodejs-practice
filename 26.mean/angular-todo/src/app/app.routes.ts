@@ -13,16 +13,18 @@ import { CreateDoctor } from './doctors/create-doctor/create-doctor';
 import { EditDoctor } from './doctors/edit-doctor/edit-doctor';
 import { AppointmentList } from './appointments/appointment-list/appointment-list';
 import { CreateAppointment } from './appointments/create-appointment/create-appointment';
+import { Dashboard } from './dashboard/dashboard/dashboard';
 
 export const routes: Routes = [
 
   // ✅ Auth Routes (First Priority)
   { path: 'auth', component: Authentication },
+  { path: '', component: Dashboard },
   {
-    path: '',
+    path: 'todos',
     canActivate: [authGuard],
     children: [
-      { path: '', component: TodoList },
+      { path: 'list', component: TodoList },
       { path: 'create', component: TodoCreate },
       { path: 'edit/:id', component: TodoEdit },
       { path: 'createMultiple', component: TodoMultiple }
@@ -42,7 +44,7 @@ export const routes: Routes = [
 
   //Doctors
   {
-    path:'doctor',
+    path: 'doctor',
     canActivate: [authGuard],
     children: [
       { path: 'list', component: DoctorsList }, // ✅ add this
@@ -54,7 +56,7 @@ export const routes: Routes = [
 
   // Appointments
   {
-    path:'appointment',
+    path: 'appointment',
     canActivate: [authGuard],
     children: [
       { path: 'list', component: AppointmentList }, // ✅ add this

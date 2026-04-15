@@ -5,6 +5,7 @@ import patientRouter from "./routes/patientRoute.js";
 import connectDB from "./database.js";
 import doctorRouter from "./routes/doctorRoute.js";
 import appointmentRouter from "./routes/appointmentRoute.js";
+import commonRouter from "./routes/commonRouter.js";
 import cors from "cors";
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(`${middlePoint}/todos`, todoRouter);
 app.use(`${middlePoint}/patient`, patientRouter);
 app.use(`${middlePoint}/doctor`, doctorRouter);
 app.use(`${middlePoint}/appointment`, appointmentRouter);
+app.use(`${middlePoint}/common`, commonRouter);
 
 connectDB();
 

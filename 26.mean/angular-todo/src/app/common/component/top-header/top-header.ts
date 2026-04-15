@@ -14,9 +14,9 @@ export class TopHeader {
   public userDetails: any = '';
   public isDropdownOpen = false;
 
-  pageTitle = '';
-  breadcrumb = '';
-  routePath = '';
+  public pageTitle = '';
+  public breadcrumb = '';
+  public routePath = '';
 
   constructor(
     private router: Router,

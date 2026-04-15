@@ -12,16 +12,21 @@
   </div>
 
   <div class="sidebar-nav">
-    <div class="nav-section-label">Todos</div>
+    <div class="nav-section-label">Dashboard</div>
     <div class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-check2-square"></i>
+      <span>Dashaboard</span>
+    </div>
+    <div class="nav-section-label">Todos</div>
+    <div class="nav-item" routerLink="/todos/list" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <i class="bi bi-check2-square"></i>
       <span>All Todos</span>
     </div>
-    <div class="nav-item" routerLink="/create" routerLinkActive="active">
+    <div class="nav-item" routerLink="/todos/create" routerLinkActive="active">
       <i class="bi bi-plus-square"></i>
       <span>Create Todo</span>
     </div>
-    <div class="nav-item" routerLink="/createMultiple" routerLinkActive="active"
+    <div class="nav-item" routerLink="/todos/createMultiple" routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }">
       <i class="bi bi-list-task"></i>
       <span>Create Multiple</span>

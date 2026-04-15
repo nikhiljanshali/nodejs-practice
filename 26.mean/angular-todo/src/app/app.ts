@@ -10,7 +10,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, NgxSpinnerModule, CommonBar, TopHeader, StatusBar],
+  imports: [CommonModule, RouterOutlet, NgxSpinnerModule, CommonBar, TopHeader],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
